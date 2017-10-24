@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Input from "./../../atoms/Input/index";
 import Button from "./../../atoms/Button/index.js";
+import weatherNextDays from "./../../../utilities/functions/WeatherApi.js"
 
-const SearchFormBox = styled.div`
+const SearchFormBox = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +25,7 @@ class SearchForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     var value = event.target.value;
@@ -33,9 +35,14 @@ class SearchForm extends Component {
       };
     });
   }
+  handleSubmit(event) {
+    event.preventDefault();
+
+    console.log(weatherNextDays(this.state.value, 5))
+  }
   render() {
     return (
-      <SearchFormBox inline={this.props.inline}>
+      <SearchFormBox onSubmit={this.handleSubmit} inline={this.props.inline}>
         <Input
           type="text"
           autoComplete="off"
@@ -43,7 +50,9 @@ class SearchForm extends Component {
           onChange={this.handleChange}
           value={this.state.value}
         />
-        <Button green>Get Weather</Button>
+        <Button green>
+          Get Weather
+        </Button>
       </SearchFormBox>
     );
   }
