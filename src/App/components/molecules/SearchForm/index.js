@@ -7,13 +7,19 @@ const SearchFormBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+
+  ${props =>
+    props.inline &&
+    `
+    flex-direction: row;
+  `};
 `;
 
 export default function SearchForm(props) {
   return (
-    <SearchFormBox>
-      <Input placeholder="St Georges, Utah" />
+    <SearchFormBox inline={props.inline}>
+      <Input placeholder="St. George, Utah" />
       <Button green>Get Weather</Button>
     </SearchFormBox>
   );

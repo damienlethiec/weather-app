@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={MainTheme}>
         <Router history={browserHistory}>
-          <div>
+          <div className="container">
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
