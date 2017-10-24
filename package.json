@@ -19,7 +19,7 @@
     "stylelint-processor-styled-components": "^1.0.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": "prettier --write",
+    "src/**/*.{js,jsx,css}": "prettier --write",
     "src/**/*.js": "stylelint"
   },
   "scripts": {
