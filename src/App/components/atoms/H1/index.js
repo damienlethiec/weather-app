@@ -5,7 +5,6 @@ const H1 = styled.h1`
   font-size: 2em;
   display: block;
   font-weight: bold;
-
   ${props =>
     props.heading &&
     `

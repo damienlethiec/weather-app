@@ -14,7 +14,6 @@ const Button = styled.button`
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
-
   ${props =>
     props.green &&
     `
