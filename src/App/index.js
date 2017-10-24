@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import "./style.css";
 import { Router, Route, Switch } from "react-router";
 import { ThemeProvider } from "styled-components";
-import MainLayout from "./../App/components/layouts/MainLayout/index.js";
-import MainTheme from "./../App/components/themes/MainTheme.js";
+import MainTheme from "./../App/utilities/themes/MainTheme.js";
 import createBrowserHistory from "history/createBrowserHistory";
+import Home from "./components/pages/Home/index.js";
+import Navbar from "./components/organisms/Navbar/index.js";
 
 const browserHistory = createBrowserHistory();
 
@@ -12,14 +14,17 @@ class App extends Component {
     return (
       <ThemeProvider theme={MainTheme}>
         <Router history={browserHistory}>
-          <Switch>
-            <MainLayout />
-            <Route
-              render={function() {
-                return <p>Not Found</p>;
-              }}
-            />
-          </Switch>
+          <div>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route
+                render={function() {
+                  return <p>Not Found</p>;
+                }}
+              />
+            </Switch>
+          </div>
         </Router>
       </ThemeProvider>
     );

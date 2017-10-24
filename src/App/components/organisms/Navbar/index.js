@@ -1,12 +1,22 @@
 import React from "react";
-import InlineSearchForm from "./../../molecules/InlineSearchForm/";
-import NavHeading from "./../../molecules/NavHeading/";
+import styled from "styled-components";
+import SearchForm from "./../../molecules/SearchForm";
+import H1 from "./../../atoms/H1";
+
+const NavbarBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: ${props => props.theme.primary_color};
+  color: #fff;
+  padding: 5px;
+`;
 
 export default function Navbar(props) {
   return (
-    <div>
-      <NavHeading>Youpi</NavHeading>
-      <InlineSearchForm />
-    </div>
+    <NavbarBox>
+      <H1>Clever Title</H1>
+      <SearchForm inline />
+    </NavbarBox>
   );
 }
