@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Background from "./assets/pattern.svg";
-import H1 from "./../../atoms/H1/index.js";
-import SearchForm from "./../../molecules/SearchForm/index.js";
+import H1 from "components/atoms/H1/index.js";
+import SearchForm from "components/molecules/SearchForm/index.js";
 
 const HomeBox = styled.div`
   display: flex;

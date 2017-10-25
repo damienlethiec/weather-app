@@ -12,6 +12,14 @@ const H1 = styled.h1`
     color: white;
     font-weight: 100;
   `};
+  ${props =>
+    props.forecast_header &&
+    `
+    font-size: 65px;
+    color: #333;
+    font-weight: 100;
+    text-align: center;
+  `}:
 `;
 
 export default H1;

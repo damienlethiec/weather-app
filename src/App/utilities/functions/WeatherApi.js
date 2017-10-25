@@ -13,7 +13,7 @@ var weatherNextDays = function getWeathers(city, days) {
 function callWeatherApi(city, days) {
   return axios
     .get(
-      `${BaseUrl}forecast?q=${city}&type=accurate&APPID=${ApiKey}&ctn=${days}`
+      `${BaseUrl}forecast/?q=${city}&type=accurate&APPID=${ApiKey}&ctn=${days}`
     )
     .then(function(weathers) {
       return weathers.data.list;
@@ -42,7 +42,7 @@ function getReadableDate(weathers) {
 }
 
 function makeDateReadable(time) {
-  return dateFormat(time, "dddd, mmmm dS, yyyy");
+  return dateFormat(time, "dddd, mmm dS");
 }
 
 export default weatherNextDays;

@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const LoadingBox = styled.p`
-  text-align: "center";
-  font-size: "35px";
+  font-size: 65px;
+  color: #333;
+  font-weight: 100;
+  text-align: center;
 `;
 
 class Loading extends Component {

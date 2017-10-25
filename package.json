@@ -8,6 +8,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "husky": "^0.14.3",
     "lint-staged": "^4.3.0",
+    "lodash": "^4.17.4",
     "prettier": "^1.7.4",
     "query-string": "^5.0.1",
     "react": "^16.0.0",
@@ -26,10 +27,11 @@
     "src/**/*.js": "stylelint"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_PATH=src/App react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "precommit": "lint-staged",
+    "precommit": "prettier --write src/**/*.{js,jsx,css}",
+    "lint": "lint-staged",
     "eject": "react-scripts eject"
   }
 }

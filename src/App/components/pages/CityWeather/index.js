@@ -1,28 +1,27 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import queryString from "query-string";
-import weatherNextDays from "./../../../utilities/functions/WeatherApi.js";
-import Loading from "./../../atoms/Loading/index.js";
-import WeatherGrid from "./../../organisms/WeatherGrid/index.js";
-
-const CityWeatherBox = styled.div`
-  color: blue;
-`;
+import { startCase } from "lodash";
+import weatherNextDays from "utilities/functions/WeatherApi.js";
+import Loading from "components/atoms/Loading/index.js";
+import WeatherGrid from "components/organisms/WeatherGrid/index.js";
+import H1 from "components/atoms/H1/index.js";
 
 class CityWeather extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      weathers: null
+      weathers: null,
+      city: null
     };
     this.updateWeathers = this.updateWeathers.bind(this);
   }
   updateWeathers(city) {
-    weatherNextDays(this.state.value, 5).then(
+    weatherNextDays(city, 5).then(
       function(weathers) {
         this.setState(function() {
           return {
+            city: city,
             weathers: weathers
           };
         });
@@ -30,18 +29,25 @@ class CityWeather extends Component {
     );
   }
   componentDidMount() {
-    const city = queryString.parse(this.props.location.search);
+    var city = startCase(queryString.parse(this.props.location.search).city);
+    this.updateWeathers(city);
+  }
+  componentWillReceiveProps(nextProps) {
+    var city = startCase(queryString.parse(nextProps.location.search).city);
     this.updateWeathers(city);
   }
   render() {
     return (
-      <CityWeatherBox>
+      <div>
         {!this.state.weathers ? (
           <Loading />
         ) : (
-          <WeatherGrid weathers={this.state.weathers} />
+          <div>
+            <H1 forecast_header>{this.state.city}</H1>
+            <WeatherGrid weathers={this.state.weathers} />
+          </div>
         )}
-      </CityWeatherBox>
+      </div>
     );
   }
 }

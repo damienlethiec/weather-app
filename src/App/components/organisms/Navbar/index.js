@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SearchForm from "./../../molecules/SearchForm";
-import H1 from "./../../atoms/H1";
+import SearchForm from "components/molecules/SearchForm";
+import H1 from "components/atoms/H1";
 
 const NavbarBox = styled.div`
   display: flex;
