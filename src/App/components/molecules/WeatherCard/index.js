@@ -11,7 +11,7 @@ const WeatherCardBox = styled.div`
   margin: 35px;
 `;
 
-export default function WeatherGrid(props) {
+export default function WeatherCard(props) {
   let icon = props.weather.weather[0].icon;
   return (
     <WeatherCardBox>
@@ -20,6 +20,7 @@ export default function WeatherGrid(props) {
           .PUBLIC_URL}/assets/images/weather-icons/${icon}.svg`}
       />
       <H2>{props.weather.dt}</H2>
+      {props.children}
     </WeatherCardBox>
   );
 }

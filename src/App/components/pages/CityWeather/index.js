@@ -44,7 +44,10 @@ class CityWeather extends Component {
         ) : (
           <div>
             <H1 forecast_header>{this.state.city}</H1>
-            <WeatherGrid weathers={this.state.weathers} />
+            <WeatherGrid
+              weathers={this.state.weathers}
+              city={this.state.city}
+            />
           </div>
         )}
       </div>

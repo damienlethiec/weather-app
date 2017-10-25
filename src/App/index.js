@@ -7,6 +7,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 import Home from "./components/pages/Home/index.js";
 import CityWeather from "./components/pages/CityWeather/index.js";
 import Navbar from "./components/organisms/Navbar/index.js";
+import DetailsWeather from "./components/pages/DetailsWeather/index.js";
 
 const browserHistory = createBrowserHistory();
 
@@ -20,6 +21,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/forecast" component={CityWeather} />
+              <Route path="/details/:city" component={DetailsWeather} />
               <Route
                 render={function() {
                   return <p>Not Found</p>;
