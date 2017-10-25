@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Button = styled.button`
+const ButtonLink = styled(Link)`
+  text-decoration: none;
   display: inline-block;
   padding: 6px 12px;
   margin: 10px;
@@ -15,12 +17,12 @@ const Button = styled.button`
   border: 1px solid transparent;
   border-radius: 4px;
   ${props =>
-    props.green &&
+    props.color &&
     `
     color: #fff;
-    background-color: ${props.theme.secondary_color};
+    background-color: ${props.color};
     border-color: #4cae4c;
   `};
 `;
 
-export default Button;
+export default ButtonLink;

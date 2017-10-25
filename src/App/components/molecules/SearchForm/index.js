@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import Input from "./../../atoms/Input/index";
-import Button from "./../../atoms/Button/index.js";
-import weatherNextDays from "./../../../utilities/functions/WeatherApi.js"
+import ButtonLink from "./../../atoms/ButtonLink/index.js";
 
-const SearchFormBox = styled.form`
+const SearchFormBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,41 +20,41 @@ class SearchForm extends Component {
     super(props);
 
     this.state = {
-      value: ""
+      city: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     var value = event.target.value;
     this.setState(function() {
       return {
-        value: value
+        city: value
       };
     });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-
-    console.log(weatherNextDays(this.state.value, 5))
-  }
   render() {
     return (
-      <SearchFormBox onSubmit={this.handleSubmit} inline={this.props.inline}>
+      <SearchFormBox inline={this.props.inline}>
         <Input
           type="text"
           autoComplete="off"
           placeholder="St. George, Utah"
           onChange={this.handleChange}
-          value={this.state.value}
+          value={this.state.city}
         />
-        <Button green>
+        <ButtonLink
+          to={{
+            pathname: "/forecast",
+            search: "?city=" + this.state.city
+          }}
+          color={this.props.theme.secondary_color}
+        >
           Get Weather
-        </Button>
+        </ButtonLink>
       </SearchFormBox>
     );
   }
 }
 
-export default SearchForm;
+export default withTheme(SearchForm);

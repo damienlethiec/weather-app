@@ -28,10 +28,10 @@ function filterWeather(weathers) {
 
 function inTheAfternoon(weather) {
   let time = weather["dt"] * 1000;
-  if (new Date().setHours(0, 0, 0, 0) === new Date(time).setHours(0, 0, 0, 0))
-    return;
   let hours = new Date(time).getHours();
-  return hours === 15;
+  let today =
+    new Date().setHours(0, 0, 0, 0) === new Date(time).setHours(0, 0, 0, 0);
+  return (hours === 21 && today) || (hours === 15 && !today);
 }
 
 function getReadableDate(weathers) {
