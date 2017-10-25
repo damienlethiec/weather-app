@@ -2,7 +2,7 @@ import axios from "axios";
 import dateFormat from "dateformat";
 
 const ApiKey = "889f5f629234ffbc8c8fe3377f541fcb";
-const BaseUrl = "http://api.openweathermap.org/data/2.5/";
+const BaseUrl = "https://api.openweathermap.org/data/2.5/";
 
 var weatherNextDays = function getWeathers(city, days) {
   return callWeatherApi(city, days)

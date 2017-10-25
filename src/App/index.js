@@ -4,10 +4,18 @@ import { Router, Route, Switch } from "react-router";
 import { ThemeProvider } from "styled-components";
 import MainTheme from "./../App/utilities/themes/MainTheme.js";
 import createBrowserHistory from "history/createBrowserHistory";
-import Home from "./components/pages/Home/index.js";
-import CityWeather from "./components/pages/CityWeather/index.js";
+import asyncComponent from "./../config/asyncComponent/index.js";
 import Navbar from "./components/organisms/Navbar/index.js";
-import DetailsWeather from "./components/pages/DetailsWeather/index.js";
+
+const AsyncHome = asyncComponent(() =>
+  import("./components/pages/Home/index.js")
+);
+const AsyncCityWeather = asyncComponent(() =>
+  import("./components/pages/CityWeather/index.js")
+);
+const AsyncDetailsWeather = asyncComponent(() =>
+  import("./components/pages/DetailsWeather/index.js")
+);
 
 const browserHistory = createBrowserHistory();
 
@@ -19,9 +27,9 @@ class App extends Component {
           <div className="container">
             <Navbar />
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/forecast" component={CityWeather} />
-              <Route path="/details/:city" component={DetailsWeather} />
+              <Route exact path="/" component={AsyncHome} />
+              <Route path="/forecast" component={AsyncCityWeather} />
+              <Route path="/details/:city" component={AsyncDetailsWeather} />
               <Route
                 render={function() {
                   return <p>Not Found</p>;
