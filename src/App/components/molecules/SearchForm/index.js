@@ -51,6 +51,7 @@ class SearchForm extends Component {
           onChange={this.handleChange}
           value={this.state.city_value}
         />
+
         <ButtonLink
           to={{
             pathname: "/forecast",
